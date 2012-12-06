@@ -8,6 +8,9 @@ class ExtendedObject
     # Return an object to represent the candidate whose name is given.
     $example.candidate name
   end
+  def initialize
+    yield self if block_given?
+  end
 end
 class Person < ExtendedObject
   attr_accessor :name
@@ -26,7 +29,7 @@ class Voter < Person
     class CandidateInitializer
       attr_accessor :voter, :candidate
       def rank a_rank
-        voter.ranks_by_candidate[candidate] = a_rank
+        voter.ranks_by_candidate[candidate]  = a_rank
       end
       def score a_score
         voter.scores_by_candidate[candidate] = a_score
@@ -72,11 +75,11 @@ class << $example
   end
   def voter name
     # Return an object to represent the voter whose name is given.
-    voters_by_name[name]     ||= Voter.new
+    voters_by_name[name]     ||= Voter.new     {|p| p.name = name}
   end
   def candidate name
     # Return an object to represent the candidate whose name is given.
-    candidates_by_name[name] ||= Candidate.new
+    candidates_by_name[name] ||= Candidate.new {|p| p.name = name}
   end
 end # class << $example
 $example.candidates_by_name ||= Hash.new
