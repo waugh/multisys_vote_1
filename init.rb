@@ -87,6 +87,12 @@ class << $example
     # Return an object to represent the candidate whose name is given.
     candidates_by_name[name] ||= Candidate.new {|p| p.name = name}
   end
+  def voters
+    voters_by_name.values
+  end
+  def candidates
+    candidates_by_name.values
+  end
 end # class << $example
 $example.candidates_by_name ||= Hash.new
 $example.voters_by_name     ||= Hash.new

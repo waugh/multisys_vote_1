@@ -13,3 +13,15 @@ r1.leaders
 r2 = r1.next
 r2.leaders
 
+r3 = r2.next
+r3.leaders
+
+r4 = r3.next
+r4.leaders
+
+
+load "rank.rb"
+
+rr = $example.rank_election.first_round
+rr.ordered_tallies
+

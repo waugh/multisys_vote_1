@@ -115,6 +115,10 @@ $example.data do |e|
     end
   end
   e.voter "Alan" do |b|
+    b.candidate "TJ O'Hara" do |c|
+      c.rank  1
+      c.score 10
+    end
     b.candidate "Buddy Roemer" do |c|
       c.rank  2
       c.score 10
