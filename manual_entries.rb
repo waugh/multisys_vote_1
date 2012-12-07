@@ -10,3 +10,6 @@ load "score.rb"
 r1 = $example.score_election.first_round
 r1.leaders
 
+r2 = r1.next
+r2.leaders
+
