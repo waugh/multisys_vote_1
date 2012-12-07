@@ -58,13 +58,13 @@ class OgleTally
 
   def <=> another
     if    high_order_part < another.high_order_part
-      -1
+      1
     elsif high_order_part > another.high_order_part
-      1
-    elsif low_order_part  < another.low_order_part
       -1
-    elsif low_order_part  > another.low_order_part
+    elsif low_order_part  < another.low_order_part
       1
+    elsif low_order_part  > another.low_order_part
+      -1
     else
       0
     end
