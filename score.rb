@@ -27,6 +27,7 @@ class ScoreElection < ExtendedObject
     @first_round ||= ScoreRound.new do |it|
       it.real_ballots = ballots
       it.candidates = candidates
+      it.ordinal = 1 # for display
     end
   end
 end
@@ -50,6 +51,7 @@ $example.score_election = ScoreElection.new
 
 class ScoreBallot < ExtendedObject
   attr_accessor :weight, :voter, :election
+  attr_writer :scores_by_candidate
 
   def initialize
     @weight = 1.0 # Use unity by default.
@@ -62,6 +64,10 @@ class ScoreBallot < ExtendedObject
     else
       "{a score ballot}"
     end
+  end
+
+  def max_score
+    election.max_score
   end
 
   def scores_by_candidate
@@ -101,6 +107,7 @@ class ScoreBallot < ExtendedObject
       n = self.class.allocate
       n.scores_by_candidate = scores_by_candidate
       n.voter               = voter
+      n.election            = election
       n.weight              = new_weight
       n
     end
