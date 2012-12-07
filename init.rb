@@ -1,3 +1,8 @@
+# The purpose of init.rb is to just set up enough structure
+# to swallow the data declared in raw_data.rb.
+# Nothing here is specific to any particular voting system, other than that we do accept ranks
+# and scores for ballots.
+
 class ExtendedObject
   # Put any methods here that I want to use just about all over the place.
   def voter name
@@ -9,6 +14,7 @@ class ExtendedObject
     $example.candidate name
   end
   def initialize
+    super
     yield self if block_given?
   end
 end
