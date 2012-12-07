@@ -1,26 +1,53 @@
-Suppose the US presidency were a multi-seat office, and the seven of us who submitted ballots were going to elect people to fill the office by proportional representation.  Then by the score election, they'd be filled in this order:
+Suppose the US presidency were a multi-seat office, and
+the seven of us who submitted ballots were going to elect
+people to fill the office by proportional representation.
+Then by the score election, they'd be filled in this order:
 
- => [{3.46153846153846 Rocky Anderson}] 
- => [{1.85125004923177 Gary Johnson}] 
+ => [{3.46153846153846 Rocky Anderson}]
+ => [{1.85125004923177 Gary Johnson}]
  => [{1.84477750779722 Jill Stein}]
 
-The numbers here are average scores.  The average score for Rocky Anderson is unweighted since he is chosen on the first round.  It is the average over 14 ballots, those being our seven real ballots and seven fake ballots that give all candidates zeros.  The subsequent average scores are all derived using weighted ballots.  Ballots are deweighted according to what scores they give to prior winners to any given round.  This gives for example the Johnson voters a relative boost if by and large they didn't give a high score to Anderson.
+The numbers here are average scores.  The average score
+for Rocky Anderson is unweighted since he is chosen on
+the first round.  It is the average over 14 ballots, those
+being our seven real ballots and seven fake ballots that
+give all candidates zeros.  The subsequent average scores
+are all derived using weighted ballots.  Ballots are
+deweighted according to what scores they give to prior
+winners to any given round.  This gives for example the
+Johnson voters a relative boost if by and large they didn't
+give a high score to Anderson.
 
 The next round comes up with a tie.
 
- => [{1.25 James Ogle}, {1.25 Tiffany Briscoe}] 
+ => [{1.25 James Ogle}, {1.25 Tiffany Briscoe}]
 
-Generally, election laws say what to do in case of ties.  In some States they call for drawing lots.  In this case, suppose Briscoe is selected.  Let's run the subsequent round (Ogle will still be a candidate in it).
+Generally, election laws say what to do in case of ties.
+In some States they call for drawing lots.  In this case,
+suppose Briscoe is selected.  Let's run the subsequent
+round (Ogle will still be a candidate in it).
 
- => [{1.35290782452982 Virgil Goode}] 
+ => [{1.35290782452982 Virgil Goode}]
 
 Continuing to run rounds, I get:
 
- => [{0.808635165557362 Ron Paul}] 
- => [{0.989851260455919 Barack Obama}] 
- => [{0.599173553719008 James Ogle}] 
- => [{0.495023904649908 Buddy Roemer}] 
- => [{0.204479375768999 Mitt Romney}] 
- => [] 
+ => [{0.808635165557362 Ron Paul}]
+ => [{0.989851260455919 Barack Obama}]
+ => [{0.599173553719008 James Ogle}]
+ => [{0.495023904649908 Buddy Roemer}]
+ => [{0.204479375768999 Mitt Romney}]
+ => []
 
-For the detailed system I want to propose for use in the US, I'm fairly convinced to change the treatment of candidates who are mentioned on few ballots.  Here, I used the seven fake ballots to keep them down somewhat.  The proposal I read, from probably smarter people, was to use 1000 such fake ballots, even with the whole US electorate.  I'm thinking maybe the best thing to propose instead is just to give candidates whose names don't appear on a given ballot, zeros on that ballot (in effect).  That way, write-ins won't do well unless lots and lots of people write them in.  In the present example, I only averaged the write-ins' scores over the ballots that mentioned them and the fake ballots.
+For the detailed system I want to propose for use in
+the US, I'm fairly convinced to change the treatment of
+candidates who are mentioned on few ballots.  Here, I
+used the seven fake ballots to keep them down somewhat.
+The proposal I read, from probably smarter people,
+was to use 1000 such fake ballots, even with the whole
+US electorate.  I'm thinking maybe the best thing to
+propose instead is just to give candidates whose names
+don't appear on a given ballot, zeros on that ballot
+(in effect).  That way, write-ins won't do well unless
+lots and lots of people write them in.  In the present
+example, I only averaged the write-ins' scores over the
+ballots that mentioned them and the fake ballots.
