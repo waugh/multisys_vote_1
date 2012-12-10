@@ -77,8 +77,8 @@ class OgleTally
     round.ballots.each do | a_ballot |
       hit = a_ballot.rank_for_candidate candidate
       if hit
-        high += 1     # tic count.
-        low -= hit    # sum rank numbers negated.
+        high += a_ballot.weight         # tic count.
+        low -= hit * a_ballot.weight    # sum rank numbers negated.
       end
     end
     @high_order_part = high
@@ -158,6 +158,7 @@ end
 class OgleBallot < ExtendedObject
   attr_accessor :voter, :election
   attr_writer :ranks_by_candidate
+  attr_writer :weight # for made-up examples where a ballot represents many.
 
   def inspect
     if voter
@@ -169,6 +170,9 @@ class OgleBallot < ExtendedObject
 
   def rank_for_candidate a_candidate
     ranks_by_candidate[a_candidate]
+  end
+  def weight
+    @weight ||= voter.weight || 1
   end
 
   def ranks_by_candidate

@@ -50,14 +50,13 @@ $example.score_election = ScoreElection.new
 
 
 class ScoreBallot < ExtendedObject
-  attr_accessor :weight, :voter, :election
+  attr_writer :weight
+  attr_accessor :voter, :election
   attr_writer :scores_by_candidate
 
-  def initialize
-    @weight = 1.0 # Use unity by default.
-    super
+  def weight
+    @weight ||= voter.weight.to_f
   end
-
   def inspect
     if voter
       "{ballot of #{voter.inspect} wt:#{weight} #{scores_by_candidate.size} scores}"
@@ -100,7 +99,7 @@ class ScoreBallot < ExtendedObject
     sum = some_winners.inject(0.0) do | acc, a_winner |
       acc + ((weighted_score_for_candidate a_winner) || 0.0)
     end
-    new_weight = 0.5 / (0.5 + sum / max_score)
+    new_weight = 0.5 * voter.weight / (0.5 + sum / max_score)
     if new_weight == weight
       self
     else

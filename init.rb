@@ -29,7 +29,7 @@ class Person < ExtendedObject
   end
 end
 class Voter < Person
-  attr_accessor :ranks_by_candidate, :scores_by_candidate
+  attr_accessor :ranks_by_candidate, :scores_by_candidate, :weight
   class Initializer
     attr_accessor :target
     class CandidateInitializer
@@ -40,6 +40,9 @@ class Voter < Person
       def score a_score
         voter.scores_by_candidate[candidate] = a_score
       end
+    end
+    def weight shall_be
+      target.weight = shall_be
     end
     def candidate name, &y
       # Accept data initialization concerning the voter's attitude to the named candidate.
@@ -56,6 +59,7 @@ class Voter < Person
     # Answer with an object that can initialize me from data declarations.
     iobj = Initializer.new
     iobj.target = self
+    self.weight = 1 # can be changed
     iobj
   end
   def class_word

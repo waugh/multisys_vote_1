@@ -1,0 +1,17 @@
+Rank result:
+
+[{(52, -78) Candidate A}, {(52, -78) Candidate B}, {(48, -48) Candidate C}]
+
+Score results:
+
+1.8.7 :025 >   r1 = $example.score_election.first_round
+ => {round 1} 
+1.8.7 :026 > r1.leaders
+ => [{3.16666666666667 Candidate A}, {3.16666666666667 Candidate B}] 
+1.8.7 :027 > r1.winners = [r1.leaders.first]
+ => [{3.16666666666667 Candidate A}] 
+1.8.7 :028 > r2 = r1.next
+ => {round 2} 
+1.8.7 :029 > r2.leaders
+ => [{6.96132596685083 Candidate C}] 
+
